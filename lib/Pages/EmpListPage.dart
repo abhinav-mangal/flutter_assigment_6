@@ -65,6 +65,10 @@ class _EmpListPageState extends State<EmpListPage> {
                         height: 40.0,
                         width: 40.0,
                       ),
+                      trailing: Icon(
+                        Icons.arrow_forward_ios,
+                        color: Colors.blue[400],
+                      ),
                       onTap: () {
                         Navigator.push(
                             context,

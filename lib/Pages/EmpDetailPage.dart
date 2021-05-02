@@ -14,6 +14,12 @@ class DetailPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Employees Details'),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(Icons.arrow_back_ios),
+        ),
       ),
       body: Column(
         children: [
