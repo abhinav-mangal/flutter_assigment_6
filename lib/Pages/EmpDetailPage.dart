@@ -9,8 +9,6 @@ class DetailPage extends StatelessWidget {
   DetailPage(this.data);
   final data;
 
-  // DetailPage(this.data);
-  // final data;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
