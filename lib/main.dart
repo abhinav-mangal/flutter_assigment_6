@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_assignment_6/Pages/ChartsPage.dart';
-import 'package:flutter_assignment_6/Pages/MainPage.dart';
+import 'package:flutter_assignment_6/Pages/EmpListPage.dart';
 
 void main() {
   return runApp(ChartApp());
@@ -13,7 +12,7 @@ class ChartApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Charts',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: MainPage(),
+      home: EmpListPage(),
     );
   }
 }

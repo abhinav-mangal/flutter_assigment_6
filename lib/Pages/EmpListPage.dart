@@ -45,11 +45,20 @@ class _EmpListPageState extends State<EmpListPage> {
                     return ListTile(
                       title: Padding(
                         padding: const EdgeInsets.all(0.0),
-                        child: Text(data[index]['firstName'] +
-                            ' ' +
-                            data[index]['lastName']),
+                        child: Text(
+                          data[index]['firstName'] +
+                              ' ' +
+                              data[index]['lastName'],
+                          style: TextStyle(
+                              color: Colors.blue, fontWeight: FontWeight.w800),
+                        ),
                       ),
-                      subtitle: Text(data[index]['email']),
+                      subtitle: Text(
+                        data[index]['email'],
+                        style: TextStyle(
+                            color: Colors.blue[300],
+                            fontWeight: FontWeight.w400),
+                      ),
                       leading: Image.network(
                         data[index]['imageUrl'],
                         fit: BoxFit.cover,
@@ -66,12 +75,7 @@ class _EmpListPageState extends State<EmpListPage> {
                   });
               // );
             } else
-              return Center(
-                child: Text(
-                  'Loading..',
-                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.w700),
-                ),
-              );
+              return Center(child: CircularProgressIndicator.adaptive());
           },
         ),
       ),
