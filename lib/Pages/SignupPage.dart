@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_assignment_6/Services/AuthData.dart';
 import 'package:provider/provider.dart';
 
-import 'LoginPage.dart';
-
 class SignupPage extends StatefulWidget {
   @override
   _SignupPageState createState() => _SignupPageState();
@@ -20,8 +18,10 @@ class _SignupPageState extends State<SignupPage> {
           leading: IconButton(
             icon: Icon(Icons.arrow_back),
             onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => LoginPage()));
+              Navigator.pushNamed(
+                context,
+                '/LoginPage',
+              );
             },
           ),
           title: Text('SignUp'),
@@ -123,8 +123,10 @@ class _SignupPageState extends State<SignupPage> {
       await Provider.of<Authentication>(context, listen: false)
           .signUp(_authData['email'], _authData['password']);
 
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => LoginPage()));
+      Navigator.pushNamed(
+        context,
+        '/LoginPage',
+      );
     } catch (error) {
       var errorMessage = 'Incorrent Email or Password. Try Again.';
       _showErroeDialog(errorMessage);

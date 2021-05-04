@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_assignment_6/Pages/EmpListPage.dart';
 import 'package:flutter_assignment_6/Pages/LoginPage.dart';
+import 'package:flutter_assignment_6/Pages/SignupPage.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -23,6 +25,12 @@ class ChartApp extends StatelessWidget {
         title: 'Charts',
         theme: ThemeData(primarySwatch: Colors.blue),
         home: LoginPage(),
+        routes: <String, WidgetBuilder>{
+          '/LoginPage': (BuildContext context) => LoginPage(),
+          '/SignupPage': (BuildContext context) => SignupPage(),
+          '/EmpListPage': (BuildContext context) => EmpListPage(),
+          // '/DetailPage': (BuildContext context) => DetailPage(),
+        },
       ),
     );
   }

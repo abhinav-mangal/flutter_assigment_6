@@ -4,6 +4,7 @@ import 'package:flutter_assignment_6/Charts/AreaChart.dart';
 import 'package:flutter_assignment_6/Charts/BarChart.dart';
 import 'package:flutter_assignment_6/Charts/LineChart.dart';
 import 'package:flutter_assignment_6/Charts/PieChart.dart';
+import 'package:flutter_assignment_6/Model/MyAppBar.dart';
 
 class DetailPage extends StatelessWidget {
   DetailPage(this.data);
@@ -12,17 +13,10 @@ class DetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Employees Details'),
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: Icon(Icons.arrow_back_ios),
-        ),
+      appBar: MyAppBar(
+        title: Text('Employee Details'),
       ),
       body: Container(
-        color: Colors.blue[50],
         child: Column(
           children: [
             SizedBox(

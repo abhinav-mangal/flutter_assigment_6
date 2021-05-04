@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_assignment_6/Model/MyAppBar.dart';
 import 'package:flutter_assignment_6/Services/SalesData.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
@@ -41,8 +42,8 @@ class _AreaChartState extends State<AreaChart> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Area chart'),
+        appBar: MyAppBar(
+          title: Text("Area Chart"),
         ),
         body: Center(
           child: SfCartesianChart(

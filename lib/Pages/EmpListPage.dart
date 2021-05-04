@@ -2,7 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_assignment_6/Model/MyAppBar.dart';
 import 'package:flutter_assignment_6/Pages/EmpDetailPage.dart';
+import 'package:octo_image/octo_image.dart';
 
 class EmpListPage extends StatefulWidget {
   EmpListPage({Key key, this.title}) : super(key: key);
@@ -18,8 +20,8 @@ class _EmpListPageState extends State<EmpListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Employees List'),
+      appBar: MyAppBar(
+        title: Text('Employees'),
       ),
       body: Container(
         child: FutureBuilder(
@@ -56,11 +58,40 @@ class _EmpListPageState extends State<EmpListPage> {
                               color: Colors.blue[300],
                               fontWeight: FontWeight.w400),
                         ),
-                        leading: Image.network(
-                          data[index]['imageUrl'],
-                          fit: BoxFit.cover,
-                          height: 40.0,
-                          width: 40.0,
+                        leading: CircleAvatar(
+                          backgroundColor: Colors.transparent,
+                          radius: 25,
+                          child: Container(
+                            // color: Colors.blue,
+                            decoration: BoxDecoration(
+                                color: Colors.transparent,
+                                borderRadius: BorderRadius.circular(50.0)),
+                            child: ClipOval(
+                              child: OctoImage(
+                                image: NetworkImage(data[index]['imageUrl']),
+                                progressIndicatorBuilder: OctoProgressIndicator
+                                    .circularProgressIndicator(),
+                                // color: ,
+                              ),
+                            ),
+                          ),
+                          // CachedNetworkImage(
+                          //   imageUrl: data[index]['imageurl'],
+                          //   placeholder: (context, url) =>
+                          //       CircularProgressIndicator(),
+                          // imageBuilder: (context, image) => CircleAvatar(
+                          //   backgroundImage: data[index]['imageurl'],
+                          //   radius: 40,
+                          // ),
+                          // errorWidget: (context, url, error) => CircleAvatar(
+                          //   backgroundColor: Colors.grey,
+                          //   child: userProfileAvatarPlaceholder,
+                          //   radius: 40,
+                          // ),
+                          // ),
+                          // backgroundImage: NetworkImage(
+                          //   data[index]['imageUrl'],
+                          // ),
                         ),
                         trailing: Icon(
                           Icons.arrow_forward_ios,
