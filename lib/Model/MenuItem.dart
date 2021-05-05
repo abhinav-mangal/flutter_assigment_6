@@ -19,7 +19,7 @@ class MenuItems {
   );
 
   static const itemLogout = MenuItem(
-    text: 'Logout',
+    text: 'Sign Out',
     icon: Icons.logout,
   );
 }
