@@ -7,21 +7,28 @@ import 'package:flutter_assignment_6/Pages/EmpDetailPage.dart';
 import 'package:octo_image/octo_image.dart';
 
 class EmpListPage extends StatefulWidget {
-  EmpListPage({Key key, this.title}) : super(key: key);
-
   final String title;
+  final String name;
+
+  const EmpListPage({
+    Key key,
+    this.title,
+    this.name,
+  }) : super(key: key);
 
   @override
-  _EmpListPageState createState() => _EmpListPageState();
+  _EmpListPageState createState() => _EmpListPageState(name);
 }
 
 class _EmpListPageState extends State<EmpListPage> {
   List data;
+  String name;
+  _EmpListPageState(this.name);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MyAppBar(
-        title: Text('Employees'),
+        title: Text("Welcome " + '$name'),
       ),
       body: Container(
         child: FutureBuilder(
@@ -71,27 +78,9 @@ class _EmpListPageState extends State<EmpListPage> {
                                 image: NetworkImage(data[index]['imageUrl']),
                                 progressIndicatorBuilder: OctoProgressIndicator
                                     .circularProgressIndicator(),
-                                // color: ,
                               ),
                             ),
                           ),
-                          // CachedNetworkImage(
-                          //   imageUrl: data[index]['imageurl'],
-                          //   placeholder: (context, url) =>
-                          //       CircularProgressIndicator(),
-                          // imageBuilder: (context, image) => CircleAvatar(
-                          //   backgroundImage: data[index]['imageurl'],
-                          //   radius: 40,
-                          // ),
-                          // errorWidget: (context, url, error) => CircleAvatar(
-                          //   backgroundColor: Colors.grey,
-                          //   child: userProfileAvatarPlaceholder,
-                          //   radius: 40,
-                          // ),
-                          // ),
-                          // backgroundImage: NetworkImage(
-                          //   data[index]['imageUrl'],
-                          // ),
                         ),
                         trailing: Icon(
                           Icons.arrow_forward_ios,

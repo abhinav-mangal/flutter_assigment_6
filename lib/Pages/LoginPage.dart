@@ -1,23 +1,30 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_assignment_6/Pages/EmpListPage.dart';
 import 'package:flutter_assignment_6/Services/AuthData.dart';
 import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
+  final String name;
+
+  const LoginPage({Key key, this.name}) : super(key: key);
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _LoginPageState createState() => _LoginPageState(name);
 }
 
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
+  String name;
+  _LoginPageState(this.name);
 
   @override
   Widget build(BuildContext context) {
+    // var _name = widget.name;
     return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(
           appBar: AppBar(
-            title: Text('LogIn'),
+            title: Text('Login'),
             actions: [
               FloatingActionButton.extended(
                 heroTag: 'b1',
@@ -29,7 +36,7 @@ class _LoginPageState extends State<LoginPage> {
                 label: Row(
                   children: [
                     Text(
-                      'SignUp',
+                      'Signup',
                       style: TextStyle(fontSize: 20),
                     ),
                     SizedBox(
@@ -122,10 +129,10 @@ class _LoginPageState extends State<LoginPage> {
       await Provider.of<Authentication>(context, listen: false)
           .login(_authData['email'], _authData['password']);
 
-      Navigator.pushNamed(
-        context,
-        '/EmpListPage',
-      );
+      await Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => EmpListPage(
+                name: name,
+              )));
     } catch (error) {
       var errorMessage = 'Incorrent Email or Password. Try after sometime.';
       _showErroeDialog(errorMessage);

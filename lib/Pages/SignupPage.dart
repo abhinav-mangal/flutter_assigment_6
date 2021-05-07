@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_assignment_6/Pages/LoginPage.dart';
 import 'package:flutter_assignment_6/Services/AuthData.dart';
 import 'package:provider/provider.dart';
 
@@ -10,6 +11,7 @@ class SignupPage extends StatefulWidget {
 
 class _SignupPageState extends State<SignupPage> {
   final _formKey = GlobalKey<FormState>();
+  String name;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +38,7 @@ class _SignupPageState extends State<SignupPage> {
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                   child: Container(
-                    height: 360,
+                    height: 440,
                     width: 300,
                     padding: EdgeInsets.all(16),
                     child: Form(
@@ -45,10 +47,26 @@ class _SignupPageState extends State<SignupPage> {
                         child: Column(
                           children: <Widget>[
                             TextFormField(
+                              decoration:
+                                  InputDecoration(labelText: 'Full Name'),
+                              keyboardType: TextInputType.name,
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please Entre your Name';
+                                }
+                                return null;
+                              },
+                              onSaved: (value) {
+                                name = value;
+                              },
+                            ),
+                            TextFormField(
                               decoration: InputDecoration(labelText: 'Email'),
                               keyboardType: TextInputType.emailAddress,
                               validator: (value) {
-                                if (value.isEmpty || !value.contains('@')) {
+                                if (value.isEmpty ||
+                                    !value.contains('@') &&
+                                        !value.contains('.com')) {
                                   return 'Invalid Email';
                                 }
                                 if (value == null || value.isEmpty) {
@@ -123,10 +141,10 @@ class _SignupPageState extends State<SignupPage> {
       await Provider.of<Authentication>(context, listen: false)
           .signUp(_authData['email'], _authData['password']);
 
-      Navigator.pushNamed(
-        context,
-        '/LoginPage',
-      );
+      Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => LoginPage(
+                name: name,
+              )));
     } catch (error) {
       var errorMessage = 'Incorrent Email or Password. Try Again.';
       _showErroeDialog(errorMessage);
